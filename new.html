@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background-color: cadetblue;
+            }
+            .frame{
+                width: 500px;
+                min-height: 300px;
+                background-color: #fff;
+                left: 50%;
+                top: 50%;
+                position: absolute;
+                transform: translate(-50%,-50%);
+            }
+            h1{
+                width: 500px;
+                min-height: 60px;
+                background-color: rgb(92, 92, 92);
+                color: #fff;
+                text-align: center;
+                border-radius: 10px;
+                left: 50%;
+                top: 50%;
+                position: absolute;
+                transform: translate(-50%,-50%);
+            }
+            h2{
+                width: 500px;
+                min-height: 50px;
+                text-transform: capitalize;
+                text-align: center;
+                border-radius: 10px;
+                font-size: 30px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .abc{
+                width: 300px;
+                min-height: 40px;
+                margin-left: 100px;
+                text-align: center;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #000;
+                margin-bottom: 20px;
+            }
+            #sb{
+                width: 300px;
+                min-height: 50px;
+                margin-left: 100px;
+                text-align: center;
+                border: 2px solid #000;
+                outline: none;
+                background: none;
+                border-radius: 50px;
+                font-size: 25px;
+            }
+            .container{
+                margin-left: 455px;
+                margin-top: 200px;
+            }
+            .btn{
+                width: 100px;
+                height: 50px;
+                margin-left: 10px;
+                font-size: 25px;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+            }
+            .btn:hover{
+                background-color: cornflowerblue;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="demo"></h1>
+        <div class="container">
+            <input class="btn" type="button" value = "Start" onclick="start()">
+            <input class="btn" type="button" value= "Pause" onclick="pause()">
+            <input class="btn" type="button" value = "Stop" onclick="stop()">
+        </div>
+        <div class="stopwatch"></div>
+        <script>
+            
+
+            var t = 0;
+            var sec = 0;
+            var min = 0;
+            var hours = 0;
+            var timer = null;
+            function main()
+            {
+                this.sec++;
+                //console.log(sec);
+                if(this.sec/60 == 1)
+                {
+                    this.sec = 0;
+                    this.min++;
+                    //console.log(min);
+                
+                if(this.min/60 == 1)
+                {
+                    this.min = 0;
+                    this.hours++;
+                }
+            }
+            document.getElementById("demo").innerHTML
+             = hours + "hrs " + min + "min " + sec + "sec ";
+        }
+
+
+
+            function pause()
+            {
+                clearInterval(this.timer);
+                this.timer = 0;
+            }
+
+            function stop()
+            {
+                if(stop)
+                {
+                    clearInterval(this.timer);
+                    this.timer = 0;
+                     sec = 0;
+                     min = 0;
+                     hours = 0;
+                     document.getElementById("demo").innerHTML
+                    = hours + "hrs " + min + "min " + sec + "sec ";
+                    //console.log(this.timer);
+                }
+            }
+
+            function start()
+            {
+                console.log(this.timer);
+               if(!this.timer)
+               {
+                this.timer = setInterval(main,100);
+               }
+            }
+        </script>
+    </body>
+</html>
